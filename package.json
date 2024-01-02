@@ -1,0 +1,35 @@
+{
+  "name": "js-sieve",
+  "version": "0.0.1",
+  "description": "SIEVE in JS, a modern efficient cache algorithm that is simpler than LRU, using FIFO 2Q.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "esno test/index.mjs",
+    "bench": "esno bench/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurtextrem/js-sieve.git#main"
+  },
+  "keywords": [
+    "cache",
+    "lru",
+    "sieve",
+    "fifo"
+  ],
+  "author": "Jacob \"kurtextrem\" Groß",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kurtextrem/js-sieve/issues"
+  },
+  "homepage": "https://github.com/kurtextrem/js-sieve#readme",
+  "devDependencies": {
+    "esno": "^4.0.0"
+  },
+  "dependencies": {
+    "@js-sdsl/link-list": "^4.4.2"
+  }
+}
