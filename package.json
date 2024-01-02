@@ -1,17 +1,17 @@
 {
   "name": "js-sieve",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "SIEVE in JS, a modern efficient cache algorithm that is simpler than LRU, using FIFO 2Q.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/sieve.cjs",
+  "module": "./dist/sieve.js",
+  "types": "./dist/sieve.d.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "esno test/index.mjs",
     "bench": "esno bench/index.mjs",
-    "publish": "tsup sieve.mts --format esm,cjs,iife"
+    "build": "tsup sieve.mts --format esm,cjs --dts"
   },
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
   "dependencies": {
     "@js-sdsl/link-list": "^4.4.2"
   },
-  "type": "module"
+  "type": "module",
+  "files": [
+    "dist/*"
+  ]
 }

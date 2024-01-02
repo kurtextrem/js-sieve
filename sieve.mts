@@ -1,12 +1,12 @@
 import { LinkList, LinkListIterator } from '@js-sdsl/link-list';
 
-class Entry<K, V> {
+export class Entry<K, V> {
     constructor(public key: K, public value: V, public visited: boolean = false) {}
 }
 
-class Sieve<K, V> {
+export class Sieve<K, V> {
     private size: number;
-    items: Map<K, Entry<K, V>>;
+    private items: Map<K, Entry<K, V>>;
     private ll: LinkList<Entry<K, V>>;
     private hand: LinkListIterator<Entry<K, V>> | undefined;
 
@@ -96,5 +96,3 @@ class Sieve<K, V> {
         this.hand = undefined;
     }
 }
-
-export { Sieve }
