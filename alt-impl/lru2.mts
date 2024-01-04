@@ -168,7 +168,7 @@ SieveCache.prototype.set = function(key, value) {
     return;
   }
 
-  pointer = this.size < this.capacity ? this.size++ : this.evict(key, value);
+  pointer = this.size < this.capacity ? ++this.size : this.evict(key, value);
 
   // Storing key & value
   this.items.set(key, pointer);
@@ -206,7 +206,7 @@ SieveCache.prototype.setpop = function(key, value) {
     return {evicted: false, key: key, value: oldValue};
   }
 
-  pointer = this.size < this.capacity ? this.size++ : this.evict(key, value);
+  pointer = this.size < this.capacity ? ++this.size : this.evict(key, value);
 
   // Storing key & value
   this.items.set(key, pointer);
@@ -288,7 +288,7 @@ SieveCache.prototype.forEach = function(callback, scope) {
     callback.call(scope, values[pointer], keys[pointer], this);
     pointer = forward[pointer];
 
-    i++;
+    ++i;
   }
 };
 
@@ -312,9 +312,7 @@ SieveCache.prototype.keys = function() {
 
     var key = keys[pointer];
 
-    i++;
-
-    if (i < l)
+    if (++i < l)
       pointer = forward[pointer];
 
     return {
@@ -344,9 +342,7 @@ SieveCache.prototype.values = function() {
 
     var value = values[pointer];
 
-    i++;
-
-    if (i < l)
+    if (++i < l)
       pointer = forward[pointer];
 
     return {
@@ -378,9 +374,7 @@ SieveCache.prototype.entries = function() {
     var key = keys[pointer],
         value = values[pointer];
 
-    i++;
-
-    if (i < l)
+    if (++i < l)
       pointer = forward[pointer];
 
     return {
