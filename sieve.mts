@@ -67,7 +67,7 @@ export class Sieve<K, V> {
         return this.ll.length;
     }
 
-    purge(): void {
+    clear(): void {
         this.items.clear();
         this.ll.clear();
     }
