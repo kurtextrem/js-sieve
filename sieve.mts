@@ -73,12 +73,12 @@ export class Sieve<K, V> {
     }
 
     private evict(): void {
-        if (!this.hand) {
+        if (!this.hand || !this.hand.isAccessible()) {
             this.hand = this.ll.rBegin(); // start on tail
         }
 
         let i: Entry<K, V>;
-        while (this.hand.isAccessible() && (i = this.hand.pointer) && i.visited) {
+        while ((i = this.hand.pointer) && i.visited) {
             i.visited = false;
 
             this.hand.next(); // as we use `rBegin`, this is actually the prev node
@@ -87,12 +87,7 @@ export class Sieve<K, V> {
             }
         }
 
-        const hand = this.hand;
-        if (hand.isAccessible()) {
-            this.items.delete(hand.pointer.key);
-            this.ll.eraseElementByIterator(hand);
-            return;
-        }
-        this.hand = undefined;
+        this.items.delete(this.hand.pointer.key);
+        this.ll.eraseElementByIterator(this.hand);
     }
 }

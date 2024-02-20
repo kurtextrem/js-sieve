@@ -1,17 +1,29 @@
-import { Sieve  } from '../list.mts'
+import { strictEqual } from "assert";
+import { Sieve } from "../sieve.mts";
 
-const list = new Sieve<string, string>(2)
-list.set('a', 'a')
-list.set('b', 'b')
-list.set('c', 'c')
-console.log(list.len() === 2)
-console.log(list.contains('b'))
-console.log(list.contains('c'))
-console.log(!list.contains('a')) // FIFO
+let sieve = new Sieve<string, string>(2);
+sieve.set("a", "a");
+sieve.set("b", "b");
+sieve.set("c", "c");
+strictEqual(sieve.len(), 2);
+strictEqual(sieve.contains("b"), true);
+strictEqual(sieve.contains("c"), true);
+// FIFO
+strictEqual(sieve.contains("a"), false);
 
-list.get('b') // visit
-list.set('a', 'a')
-console.log(list.len() === 2)
-console.log(list.contains('b'))
-console.log(!list.contains('c')) // no longer FIFO because of the visit
-console.log(list.contains('a'))
+// visit
+sieve.get("b");
+sieve.set("a", "a");
+strictEqual(sieve.len(), 2);
+strictEqual(sieve.contains("b"), true);
+// no longer FIFO because of the visit
+strictEqual(sieve.contains("c"), false);
+strictEqual(sieve.contains("a"), true);
+
+sieve = new Sieve<string, string>(2);
+sieve.set("a", "a");
+sieve.get("a");
+sieve.set("c", "c");
+sieve.set("b", "b");
+sieve.set("c", "c");
+strictEqual(sieve.len(), 2);

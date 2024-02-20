@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/kurtextrem/js-sieve#readme",
   "devDependencies": {
+    "@types/node": "^20.11.19",
     "esno": "^4.0.0",
     "obliterator": "^2.0.4",
     "tinybench": "^2.5.1",
