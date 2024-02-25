@@ -1,6 +1,6 @@
 {
   "name": "js-sieve",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SIEVE in JS, a modern efficient cache algorithm that is simpler than LRU, using FIFO 2Q.",
   "main": "./dist/sieve.cjs",
   "module": "./dist/sieve.js",
